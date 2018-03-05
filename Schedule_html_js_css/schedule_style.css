@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+
+body {
+    background-color: azure;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 5px;
+}
+
+.header {
+    background-color: orange;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    height: 60px;
+    width: 160px;
+}
+
+.alldivs {
+    background-color: aquamarine;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    height: 60px;
+    width: 160px;
+}
