@@ -2,12 +2,26 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Manager page</title>
 </head>
+<nav class="navbar" id="responsive-nav">
+	<a href="managerhomepage.html" class='active-nav'>Home</a>
+	<a href="Hotel web app project/Schedule_html_js_css/schedule.html" target="_blank"> Schedule</a>
+	<a href= >Add New user</a>
+	<a href=manager_page.html>Add task</a>
+	<a href="https://outlook.office.com/owa/" target="_blank">Email</a>
+	<a class="user" >User Name</a>
+	<a href="javascript:void(0);" class="icon">&#9776;</a>
+</nav>
+<div class="logout-form">
+	<a href=#>Profile</a>
+	<a href=#>Setting</a>
+	<a href=#>Log out</a>
+</div>
 
 <body>
-    //form validation : required minlength="6" maxlength="6", value="1" min="1" max="10" .. this would work best.//
+  
     <section class="options">
         <div id="header">Manager page; You are logged as admin</div>
         <div id="list">List of Users:</div>
@@ -35,6 +49,8 @@
         <div><a href="#">Contact App Support</a></div>
 
     </section>
+		<script src="manager_page.js"></script>
+		<script src="script.js"></script>
 
 </body>
 </html>

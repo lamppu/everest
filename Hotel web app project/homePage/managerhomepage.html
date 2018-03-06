@@ -11,7 +11,7 @@
     <a href="managerhomepage.html" class='active-nav'>Home</a>
     <a href="Hotel web app project/Schedule_html_js_css/schedule.html" target="_blank"> Schedule</a>
     <a href= >Add New user</a>
-    <a >Add task</a>
+    <a href=manager_page.html>Add task</a>
     <a href="https://outlook.office.com/owa/" target="_blank">Email</a>
     <a class="user" >User Name</a>
     <a href="javascript:void(0);" class="icon">&#9776;</a>
@@ -21,33 +21,7 @@
     <a href=#>Setting</a>
     <a href=#>Log out</a>
   </div>
-  <section class="options">
-      <div id="header">Manager page; You are logged as admin</div>
-      <div id="list">List of Users:</div>
-      <div>
-          <form action="http://localhost:8080/Schedule/webresources/entity.task/setinfo" method="get">
-              Register task information: <br>
-              <input type="number" name="id" placeholder="Id from list.." required> <br>
-              <input type="text" name="task" placeholder="The task.." pattern="[A-Za-z' -]+" required> <br>
-              <input type="text" name="day" placeholder="Day to perform.." pattern="[A-Za-z' -]+" required> <br>
-              <input type="number" name="start" placeholder="Start hour.." min=0 max=24 required> <br>
-              <input type="number" name="end" placeholder="End hour.." min=0 max=24 required>
-              <br>
 
-              <input type="submit" value="SUBMIT">
-          </form>
-      </div>
-      <div>
-          <form action="http://localhost:8080/Schedule/webresources/entities.task/delUserTask" method="delete">
-              Insert UserId to clear tasks <br>
-              <input type="number" name="id" placeholder="UserId">
-              <br>
-              <input type="submit" value="SUBMIT">
-          </form>
-      </div>
-      <div><a href="#">Contact App Support</a></div>
-
-  </section>
 
   <script src="script.js"></script>
 
