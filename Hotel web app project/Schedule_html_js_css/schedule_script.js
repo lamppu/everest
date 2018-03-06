@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    
+
     const section = document.querySelector("section");
     //const url = "https://my-json-server.typicode.com/typicode/demo/posts";
     const url = "http://localhost:8080/Schedule/webresources/entity.user/findall";
     const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
     const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
-    
+
         
     const processJSON = (function(json) {
         let jsonHours = [];
@@ -28,11 +28,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 jsonHours = [];
                 jsonDay = item.taskList[x].day.toLowerCase();
                 jsonTask = item.taskList[x].task;
-            
+
                 for(z = item.taskList[x].start; z <= item.taskList[x].end; z++){
                     jsonHours.push(z);
                 }
-                
+
                 const grid = document.querySelectorAll(".alldivs");
                 let j = 0;
                 for (y in hours){
@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         }
     });
-    
+
     const myFunction = function() {
         console.log("Hello world");
     }
-    
+
     fetch(url)
     .then(response => response.json())    //Returns a promise that resolves JSON object
     .then(processJSON)
