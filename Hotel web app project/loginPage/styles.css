@@ -1,10 +1,12 @@
-.back-img{
-  width:100%;
-  height:100%;
-  background-size: 100% 100%;
-  background-image: url(nature.jpg);
-  background-repeat: no-repeat;
-  position: fixed;
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(mountain.jpg);
+ background-repeat: no-repeat;
+ height: 100%;
+ width: 100%;
+ background-size:100% 100%;
+ background-attachment: fixed;
 }
 .logo{
   padding: 0;
@@ -15,14 +17,14 @@
 
 }
 
-@media only screen and (min-width: 800px) {
-.back-img{
+@media only screen and (max-width: 600px) {
+body{
   max-width:100%;
   height: 100%;
-  background-image: url(mountain.jpg);
+  background-image: url(nature.jpg);;
    background-size: 100% 100%;
   background-repeat: no-repeat;
-  position:fixed;
+  background-attachment: fixed;
 }
 }
 input[name=uname], input[name=uid], input[name=eml], input[name=psw], input[name=cpsw] {

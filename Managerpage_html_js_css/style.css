@@ -1,20 +1,12 @@
-* { box-sizing: border-box; }
-
-body {
-	background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg);
-	background-size: cover;
-}
-
 .options {
-	display: grid;
+	display: block;
 	grid-gap: 10px;
 	grid-template-rows: auto;
-	grid-template-columns: 400px;
-	position: fixed;
-    top: 2%;
-    left: 50%;
-    margin-left: -200px;
-    overflow: scroll;
+	grid-template-columns: 600px;
+	position: absolute;
+	padding-left: 380px;
+	padding-top: 100px;
+	width: 90%;
 }
 
 #header {
@@ -32,7 +24,7 @@ body {
 }
 
 input[type="text"], input[type="number"], input[type="submit"] {
-    width: 250px;
-    padding: 10px;
+    width: 80%;
+    padding: 20px;
     background-color: lightgray;
 }
