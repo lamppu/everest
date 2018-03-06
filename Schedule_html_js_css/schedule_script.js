@@ -5,8 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const url = "http://localhost:8080/Schedule/webresources/entity.user/findall";
     const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
     const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
-    
-        
+
     const processJSON = (function(json) {
         let jsonHours = [];
         let jsonDay = "";
@@ -39,7 +38,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     j++;
                     for (i in days){
                         if(days[i] === jsonDay && jsonHours.includes(hours[y])){
-                            grid[j].innerHTML += "<a href='myFunction();'>"+jsonTask+"</a>";
+                            let testTask = document.createElement("input");
+                            testTask.setAttribute("value", jsonTask);
+                            testTask.setAttribute("type", "button");
+                            testTask.setAttribute("onclick", "myFunction()");
+                            grid[j].appendChild(testTask);
                             j++;
                         }else{
                             j++;
@@ -50,13 +53,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     });
     
-    const myFunction = function() {
-        console.log("Hello world");
-    }
-    
     fetch(url)
     .then(response => response.json())    //Returns a promise that resolves JSON object
     .then(processJSON)
     .catch(error => (output.textContent = "Fetch crashed due to " + error));
-
+    
+    //document.querySelectorAll("button").addEventListener("click", myFunction, true);
+    
+    
 });
+
+const myFunction = function() {
+    alert("Get a move on it.");
+};

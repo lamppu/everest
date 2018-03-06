@@ -2,9 +2,18 @@
 
 body {
     background-color: azure;
+    display: grid;
+    grid-template-areas:
+        "section section section aside";
+}
+
+aside {
+    grid-area: aside;
+    margin-left: 15px;
 }
 
 section {
+    grid-area: section;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 5px;
@@ -16,8 +25,7 @@ section {
     border: 1px solid black;
     padding: 5px;
     text-align: center;
-    height: 60px;
-    width: 160px;
+    height: 40px;
 }
 
 .alldivs {
@@ -26,6 +34,5 @@ section {
     border: 1px solid black;
     padding: 5px;
     text-align: center;
-    height: 60px;
-    width: 160px;
+    height: 40px;
 }
