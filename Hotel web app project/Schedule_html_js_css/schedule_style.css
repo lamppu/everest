@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+
+body {
+    background-color: azure;
+    display: grid;
+    grid-template-areas:
+        "section section section aside";
+}
+
+aside {
+    grid-area: aside;
+    margin-left: 15px;
+}
+
+section {
+    grid-area: section;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 5px;
+}
+
+.header {
+    background-color: orange;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    height: 40px;
+}
+
+.alldivs {
+    background-color: aquamarine;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    height: 40px;
+}
