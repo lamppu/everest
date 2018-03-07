@@ -3,44 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
+package model;
+
+/**
+ *
+ * @author Johanna
+ */
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author User
- */
 @Entity
-@Table(name = "task")
-public class Task implements Serializable {
-
+@XmlRootElement
+public class Task implements Serializable{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "task")
     private String task;
-    @Column(name = "day")
     private String day;
-    @Column(name = "start")
     private int start;
-    @Column(name = "end")
     private int end;
     @JsonBackReference
     @ManyToOne
@@ -106,5 +97,6 @@ public class Task implements Serializable {
     public String toString() {
         return "entity.Task[ id=" + id + " ]";
     }
+    
     
 }

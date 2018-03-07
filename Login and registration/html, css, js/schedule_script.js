@@ -1,0 +1,85 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+    /*
+    const username = sessionStorage.getItem("username");
+    const checkSession = function () {
+        
+        if (sessionStorage.username === null || sessionStorage.username === undefined) {
+            window.location.href = "/everest/";
+        }
+        if(sessionStorage.username !== "admin") {
+            window.location.href = "/everest/userhomepage.html";
+        }
+    };
+    
+    checkSession();*/
+    
+    
+    const section = document.querySelector("section");
+    //const url = "https://my-json-server.typicode.com/typicode/demo/posts";
+    const url = "http://localhost:8080/everest/webresources/model.user/";
+    const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
+    /*
+    const findUserUrl = url + username;
+    
+    let user;
+    fetch(findUserUrl)
+            .then(response => response.json())
+            .then(json => (user = JSON.stringify(json)))
+    .catch(error => (console.log("Fetch crashed due to " + error)));
+    
+    console.log(user);*/
+        
+    const processJSON = (function(json) {
+        let jsonHours = [];
+        let jsonDay = "";
+        let jsonTask = "";
+        for (y in hours){
+            let div = document.createElement("div");
+            div.classList.add("alldivs");
+            div.innerHTML += hours[y];
+            section.appendChild(div);
+            for (i in days){
+                let div = document.createElement("div");
+                div.classList.add("alldivs");
+                section.appendChild(div);
+            }
+        }
+
+        for (let item of json){
+            for(x = 0; x < item.taskList.length; x++){
+                jsonHours = [];
+                jsonDay = item.taskList[x].day.toLowerCase();
+                jsonTask = item.taskList[x].task;
+            
+                for(z = item.taskList[x].start; z <= item.taskList[x].end; z++){
+                    jsonHours.push(z);
+                }
+                
+                const grid = document.querySelectorAll(".alldivs");
+                let j = 0;
+                for (y in hours){
+                    j++;
+                    for (i in days){
+                        if(days[i] === jsonDay && jsonHours.includes(hours[y])){
+                            grid[j].innerHTML += "<a href='myFunction();'>"+jsonTask+"</a>";
+                            j++;
+                        }else{
+                            j++;
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    const myFunction = function() {
+        console.log("Hello world");
+    };
+    
+    fetch(url)
+    .then(response => response.json())    //Returns a promise that resolves JSON object
+    .then(json => processJSON(json))
+    .catch(error => (console.log("Fetch crashed due to " + error)));
+
+});

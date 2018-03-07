@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="log_reg_styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="log_reg_script.js"></script>
+    </head>
+    <body>
+
+        <div class="back-img">
+            <header>
+                <div class="logo">
+                    <h1>ESS Everest Software Solution</h1>
+                </div>
+            </header>
+            <br>
+            <div class="login">
+                <form id="login-input">
+                    <span id="uname-span"></span>
+                    <input type="text" class="input1" placeholder="Username" name="user" id="uname" required>
+                    <span id="password-span"></span>
+                    <input type="password" class="input1" placeholder="Password" name="pass" id="passw" required>
+                    
+                </form>
+                <button id="loginbtn">Login</button>
+                    <button class="registerbtn">Register</button>
+                    <!--<span class="psw"><a href="#">Forgot password?</a></span>-->
+            </div>
+
+            <div id="id1" class="modal">
+                
+                <div class="modal-content" >
+
+                    <form class="container" id="new-user-input">
+                        <label><b>Username</b></label>
+                        <span id="username-span"></span>
+                        <input type="text" class="input2" placeholder="Enter Username" name="username" id="uname-input" required>
+
+                        <label><b>First Name</b></label>
+                        <input type="text" class="input2" placeholder="Enter First Name" name="firstname" id="firstname-input" required>
+
+                        <label><b>Last Name</b></label>
+                        <input type="text" class="input2" placeholder="Enter Last Name" name="username" id="lastname-input" required>
+
+                        <label><b>Email</b></label>
+                        <input type="email" class="input2" placeholder="Enter Email" name="email" id="email-input" required>
+                        
+                        
+                        
+                        <label><b>Password</b></label>
+                        
+                        <input type="password" class="input2" placeholder="Enter Password" name="psw"  id="psw-input" value="" required>
+                        
+                        <label><b>Confirm Password</b></label>
+                        <span id="cpsw-span"></span>
+                        <input type="password" class="input2" placeholder="Confirm Password" name="cpsw" id="cpsw-input" value="" required>
+
+
+
+                    </form>
+                    <button id="add-user">Register</button>
+                    <label>
+                        <input type="checkbox" checked="checked" id="reg-log"> Login after registration
+                    </label>
+
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" class="cancelbtn">Cancel</button>
+
+                    </div>
+                    
+                    
+                </div>
+
+            </div>
+
+        </div>
+        
+    </body>
+</html>
