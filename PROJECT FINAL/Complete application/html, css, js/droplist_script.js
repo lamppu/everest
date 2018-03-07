@@ -1,7 +1,16 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
     
     const aside = document.querySelector("aside");
-    const taskurl = "http://localhost:8080/Schedule/webresources/entity.task/";
+    const taskurl = "http://10.114.32.66:8080/Schedule/webresources/entity.task/";
+    
+    const removeurl = "http://10.114.32.66:8080/Schedule/webresources/entity.task/";
+
+    const removeTask = (function(taskID) {
+        fetch(removeurl, {method: 'delete', body: taskID })
+        .then(response => response.json())
+        .catch(error => alert("Fetch crashed due to " + error))
+    });
+
 
     const dropList = (function(json) {
         let list = document.createElement("select");
@@ -15,6 +24,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
             list.appendChild(option);
         }
         aside.appendChild(list);
+        
+        for(i = 0; i <5; i++){
+            aside.appendChild(document.createElement("br"));
+        }
+        let captiontext = document.createElement("div");
+        captiontext.innerHTML = "Your notes";
+        aside.appendChild(captiontext);
+        
+        let textbox = document.createElement("textarea");
+        textbox.setAttribute("rows", "10");
+        textbox.setAttribute("cols", "auto");
+        
+        aside.appendChild(textbox);
+
     });
     
     fetch(taskurl)
@@ -22,15 +45,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     .then(dropList)
     .catch(error => alert("Fetch crashed due to " + error))
     
+        
 });
 
-const removeurl = "http://localhost:8080/Schedule/webresources/entity.task/";
 
-const removeTask = (function(taskID) {
-    fetch(removeurl, {method: 'delete', body: taskID })
-    .then(response => response.json())
-    .catch(error => alert("Fetch crashed due to " + error))
-});
 
 
 /*const dropList2 = (function(json) {

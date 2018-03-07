@@ -36,3 +36,8 @@ section {
     text-align: center;
     height: 40px;
 }
+
+textarea, select {
+    border: 1px solid black;
+    width: 300px;
+}

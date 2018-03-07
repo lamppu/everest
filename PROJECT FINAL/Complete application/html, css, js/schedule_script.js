@@ -1,35 +1,10 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-    /*
-    const username = sessionStorage.getItem("username");
-    const checkSession = function () {
-        
-        if (sessionStorage.username === null || sessionStorage.username === undefined) {
-            window.location.href = "/everest/";
-        }
-        if(sessionStorage.username !== "admin") {
-            window.location.href = "/everest/userhomepage.html";
-        }
-    };
-    
-    checkSession();*/
-    
+document.addEventListener("DOMContentLoaded", function() {
     
     const section = document.querySelector("section");
-    //const url = "https://my-json-server.typicode.com/typicode/demo/posts";
-    const url = "http://localhost:8080/everest/webresources/model.user/";
+    const url = "http://10.114.32.66:8080/Schedule/webresources/entity.user/findall";
     const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
     const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
-    /*
-    const findUserUrl = url + username;
-    
-    let user;
-    fetch(findUserUrl)
-            .then(response => response.json())
-            .then(json => (user = JSON.stringify(json)))
-    .catch(error => (console.log("Fetch crashed due to " + error)));
-    
-    console.log(user);*/
-        
+
     const processJSON = (function(json) {
         let jsonHours = [];
         let jsonDay = "";
@@ -62,7 +37,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     j++;
                     for (i in days){
                         if(days[i] === jsonDay && jsonHours.includes(hours[y])){
-                            grid[j].innerHTML += "<a href='myFunction();'>"+jsonTask+"</a>";
+                            grid[j].innerHTML = jsonTask;
+                            /*let testTask = document.createElement("button");
+                            testTask.setAttribute("value", "motivation");
+                            testTask.setAttribute("onclick", "myFunction()");
+                            grid[j].appendChild(testTask);*/
                             j++;
                         }else{
                             j++;
@@ -73,13 +52,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     });
     
-    const myFunction = function() {
-        console.log("Hello world");
-    };
-    
     fetch(url)
     .then(response => response.json())    //Returns a promise that resolves JSON object
-    .then(json => processJSON(json))
-    .catch(error => (console.log("Fetch crashed due to " + error)));
-
+    .then(processJSON)
+    .catch(error => (alert("Fetch crashed due to " + error)));
+        
 });
+
+const myFunction = function() {
+    alert("Get a move on it.");
+};
