@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -80,6 +81,14 @@ public class UserFacadeREST extends AbstractFacade<User> {
         super.remove(super.find(id));
     }
 
+    @POST
+    @Path("delete")
+    @Produces(MediaType.TEXT_HTML)
+    public String delete(@FormParam("id") Integer id) {
+        this.remove(id);
+        return "<script>window.sessionStorage.setItem('dltuser', 'success'); window.location.href = 'http://localhost:8080/everest/manageusers.html';</script>";
+    }
+    
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -87,7 +96,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
         return super.find(id);
     }
     /*
-    @GET
+    @POST
     @Path("{username}")
     @Produces({MediaType.APPLICATION_JSON})
     public User findUser(@PathParam("username") String username) {

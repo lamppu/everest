@@ -1,57 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-    <link rel="stylesheet" href="styles.css">
-    <title>Manager page</title>
-</head>
-<body>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+        <title>Manager page</title>
+    </head>
+    <body>
 
-<nav class="navbar" id="responsive-nav">
-	<a href="managerhomepage.html" class='active-nav'>Home</a>
-	<!--<a href="Hotel web app project/Schedule_html_js_css/schedule.html" target="_blank"> Schedule</a>-->
-	<!--<a href="#" >Add New user</a>-->
-	<a href="#">Add task</a>
-	<a href="https://outlook.office.com/owa/" target="_blank">Email</a>
-	<a class="user" id="a-user"></a>
-	<a href="javascript:void(0);" class="icon">&#9776;</a>
-</nav>
-<div class="logout-form">
-	<a href=#>Profile</a>
-	<a href=#>Setting</a>
-	<a href=# id="logout">Log out</a>
-</div>
-
-  
-    <section class="options">
-        <div id="header">Manager page; You are logged as admin</div>
-        <div id="list">List of Users:</div>
-        <div>
-            <form action="http://localhost:8080/Schedule/webresources/entity.task/setinfo" method="get">
-                Register task information: <br>
-                <input type="number" name="id" placeholder="Id from list.." required> <br>
-                <input type="text" name="task" placeholder="The task.." pattern="[A-Za-z' -]+" required> <br>
-                <input type="text" name="day" placeholder="Day to perform.." pattern="[A-Za-z' -]+" required> <br>
-                <input type="number" name="start" placeholder="Start hour.." min=0 max=24 required> <br>
-                <input type="number" name="end" placeholder="End hour.." min=0 max=24 required>
-                <br>
-
-                <input type="submit" value="SUBMIT">
-            </form>
+        <nav class="navbar" id="responsive-nav">
+            <a href="manager_page.html" class='active-nav'>Home</a>
+            <!--<a href="Hotel web app project/Schedule_html_js_css/schedule.html" target="_blank"> Schedule</a>-->
+            <!--<a href="#" >Add New user</a>-->
+            <a href="managetasks.html">Manage tasks</a>
+            <a href="manageusers.html" >Manage users</a>
+            <!--<a href="https://outlook.office.com/owa/" target="_blank">Email</a>-->
+            <a class="user" id="a-user"></a>
+            <a href="javascript:void(0);" class="icon">&#9776;</a>
+        </nav>
+        <div class="logout-form">
+            <a href=#>Profile</a>
+            <a href=#>Setting</a>
+            <a href=# id="logout">Log out</a>
         </div>
-        <div>
-            <form > <!--action="http://localhost:8080/everest/webresources/entities.task/delUserTask" method="delete"-->
-                Insert UserId to clear tasks <br>
-                <input type="number" name="id" placeholder="UserId">
-                <br>
-                <input type="submit" value="SUBMIT">
-            </form>
-        </div>
-        <div><a href="#">Contact App Support</a></div>
 
-    </section>
-		<script src="manager_page.js"></script>
-		<script src="script.js"></script>
+        <script src="script.js"></script>
 
-</body>
+    </body>
 </html>

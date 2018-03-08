@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -19,6 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import model.Task;
+import model.User;
 
 /**
  *
@@ -34,17 +36,35 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
     public TaskFacadeREST() {
         super(Task.class);
     }
-
+/*
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Task create(Task entity) {
         return super.create(entity);
+    }*/
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_HTML)
+    public String createTask(@FormParam("task") String task, @FormParam("day") String day,
+            @FormParam("start") int start, @FormParam("end") int end, @FormParam("ownerid") int ownerid){
+        Task t = new Task(task, day, start, end, em.find(User.class, ownerid));
+        super.create(t);
+        super.edit(t);
+        return "<script>window.sessionStorage.setItem('addtask', 'success'); window.location.href = 'http://localhost:8080/everest/managetasks.html';</script>";
     }
-
+    
+    @POST
+    @Path("delUserTask")
+    @Produces(MediaType.TEXT_HTML)
+    public String delUserTask(@FormParam("ownerid") int id) {
+        em.find(User.class, id).emptyTaskList();
+        return "<script>window.sessionStorage.setItem('cleartasks', 'success'); window.location.href = 'http://localhost:8080/everest/managetasks.html';</script>";
+    }
+    
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") Integer id, Task entity) {
         super.edit(entity);
     }
@@ -57,21 +77,21 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Task find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Task> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Task> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }

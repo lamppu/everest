@@ -120,8 +120,9 @@ a.user {
     padding-left: 60px;
   }
 
-  input[type="text"], input[type="number"], input[type="submit"] {
+  input[type="text"], input[type="number"], input[type="submit"], select {
       width: 70%;
       padding: 20px;
       background-color: lightgray;
   }
+  select:invalid { color: gray; }

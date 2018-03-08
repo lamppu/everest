@@ -45,6 +45,14 @@ public class Task implements Serializable{
         this.id = id;
     }
     
+    public Task(String task, String day, int start, int end, User owner) {
+        this.task = task;
+        this.day = day;
+        this.start = start;
+        this.end = end;
+        this.owner = owner;
+    }
+    
     public User getOwner() {
         return owner;
     }
