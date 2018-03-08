@@ -38,10 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     for (i in days){
                         if(days[i] === jsonDay && jsonHours.includes(hours[y])){
                             grid[j].innerHTML = jsonTask;
-                            /*let testTask = document.createElement("button");
-                            testTask.setAttribute("value", "motivation");
-                            testTask.setAttribute("onclick", "myFunction()");
-                            grid[j].appendChild(testTask);*/
                             j++;
                         }else{
                             j++;
@@ -58,7 +54,3 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => (alert("Fetch crashed due to " + error)));
         
 });
-
-const myFunction = function() {
-    alert("Get a move on it.");
-};

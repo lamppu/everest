@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url(home.jpg);
+  background-image: url(hallway.jpg);
  background-repeat: no-repeat;
  height: 100%;
  width: 100%;
@@ -13,6 +13,7 @@ body {
   overflow: hidden;
   background-color: #42c2f4;
 }
+
 
 .navbar a {
   float:left;
@@ -87,7 +88,7 @@ a.user {
     text-align: left;
   }
   body{
-    background-image: url(home.jpg);
+    background-image: url(hallway.jpg);
    background-repeat: no-repeat;
    height: 100%;
    width: 100%;
