@@ -105,7 +105,9 @@ public class User implements Serializable{
         this.taskList = taskList;
     }
 
-
+    public void emptyTaskList() {
+        this.taskList = new ArrayList();
+    }
 
     
 }

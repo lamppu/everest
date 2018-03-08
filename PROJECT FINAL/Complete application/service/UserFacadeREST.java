@@ -87,7 +87,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
         return super.find(id);
     }
     /*
-    @GET
+    @POST
     @Path("{username}")
     @Produces({MediaType.APPLICATION_JSON})
     public User findUser(@PathParam("username") String username) {
