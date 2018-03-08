@@ -27,7 +27,20 @@ and open the template in the editor.
 	<a href=#>Setting</a>
 	<a href=# id="logout">Log out</a>
 </div>
-        <div>TODO write content</div>
+        <section class="options">
+            <div id="header">Remove User</div>
+            
+            <div>
+                <form action="http://localhost:8080/everest/webresources/model.user/delete" method="POST">
+                    Choose user <br>
+                    <div id="list"></div>
+                    <input type="submit" value="SUBMIT">
+                </form>
+            </div>
+            <div><a href="#">Contact App Support</a></div>
+
+        </section>
         <script src="script.js"></script>
+        <script src="manageusers_script.js"></script>
     </body>
 </html>
