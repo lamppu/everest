@@ -23,17 +23,10 @@ user.addEventListener('click',()=>{
     logout.style.display="block";
 
 });
-
 addTask.addEventListener('click', ()=>{
   addTaskForm.style.display="block";
 });
 
-const logoutElement = document.querySelector("#logout");
-logoutElement.addEventListener("click", function () {
-    console.log("logout");
-    sessionStorage.removeItem("username");
-    window.location.href = "/everest/";
-});
 //email.addEventListener('click',()=>{
 //  window.open("https://www.office.com/");
 //});

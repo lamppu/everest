@@ -11,7 +11,7 @@ body {
 
 .navbar {
   overflow: hidden;
-  background-color: #42c2f4;
+  background-color: lightseagreen;
 }
 
 
@@ -120,9 +120,8 @@ a.user {
     padding-left: 60px;
   }
 
-  input[type="text"], input[type="number"], input[type="submit"], select {
+  input[type="text"], input[type="number"], input[type="submit"] {
       width: 70%;
       padding: 20px;
       background-color: lightgray;
   }
-  select:invalid { color: gray; }

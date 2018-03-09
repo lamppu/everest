@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="post" action="webresources/entity.task/create">
+            Set a task for John doe:<br>
+            task:<input type="text" name="task"><br>
+            day:<input type="text" name="day"><br>
+            start:<input type="number" name="start"><br>
+            end:<input type="number" name="end"><br>
+            ownerid:<input type="number" name="ownerid" value="1"><br>
+            <input type="submit">
+        </form><br>
+        <form method="get" action="webresources/entity.user/findall">
+            find all:
+            <input type="submit">
+        </form><br>
+        <form method="get" action="webresources/entity.user/getuser">
+            find by User Id:
+            <input type="number" name="userid">
+            <input type="submit">
+        </form><br>
+        <form method="post" action="webresources/entity.user/create">
+            firstname:<input type="text" name="firstname"><br>
+            lastname:<input type="text" name="lastname"><br>
+            <input type="submit">
+        </form>
+        
+    </body>
+</html>

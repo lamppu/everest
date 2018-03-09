@@ -14,8 +14,8 @@
 <div class="back-img">
   <nav class="navbar" id="responsive-nav">
     <a href="userhomepage.html" class='active-nav'>Home</a>
-    <a href="#" target="_top" id="showuser"> Schedule</a>
-    <a href="" target="_blank">Chat</a>
+    <a href="#" onclick="myFunction();return false;">Schedule</a>
+    <a href="#" onclick="comingSoon();return false;">Chat</a>
     <a class="user" id="a-user"></a>
     <a href="javascript:void(0);" class="icon">&#9776;</a>
   </nav>
@@ -24,6 +24,14 @@
     <a href=#>Setting</a>
     <a href=# id="logout">Log out</a>
   </div>
+    <script>const myFunction = () => {
+        if(document.getElementById("currentuser").style.visibility === "hidden"){
+            document.getElementById("currentuser").style.visibility = "visible";
+        }else{
+            document.getElementById("currentuser").style.visibility = "hidden";
+        }}
+    const comingSoon = () => {alert("Coming soon");}
+    </script>
     
     <div id="currentuser">
         <section>
