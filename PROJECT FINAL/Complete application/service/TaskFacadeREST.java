@@ -27,7 +27,7 @@ import model.User;
  * @author Johanna
  */
 @Stateless
-@Path("model.task")
+@Path("entity.task")
 public class TaskFacadeREST extends AbstractFacade<Task> {
 
     @PersistenceContext(unitName = "everestPU")
@@ -51,7 +51,7 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
         Task t = new Task(task, day, start, end, em.find(User.class, ownerid));
         super.create(t);
         super.edit(t);
-        return "<script>window.sessionStorage.setItem('addtask', 'success'); window.location.href = 'http://localhost:8080/everest/managetasks.html';</script>";
+        return "<script>window.sessionStorage.setItem('addtask', 'success'); window.location.href = 'http://10.114.32.66:8080/Schedule/manager_page.html';</script>";
     }
     
     @POST
@@ -59,7 +59,15 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
     @Produces(MediaType.TEXT_HTML)
     public String delUserTask(@FormParam("ownerid") int id) {
         em.find(User.class, id).emptyTaskList();
-        return "<script>window.sessionStorage.setItem('cleartasks', 'success'); window.location.href = 'http://localhost:8080/everest/managetasks.html';</script>";
+        return "<script>window.sessionStorage.setItem('cleartasks', 'success'); window.location.href = 'http://10.114.32.66:8080/Schedule/manager_page.html';</script>";
+    }
+    
+    @POST
+    @Path("assignTask")
+    @Produces(MediaType.TEXT_HTML)
+    public String assignTask(@FormParam("taskid") int taskid, @FormParam("ownerid") int ownerid) {
+        em.find(Task.class, taskid).setOwner(em.find(User.class, ownerid));
+        return "<script>window.sessionStorage.setItem('assigntask', 'success'); window.location.href = 'http://10.114.32.66:8080/Schedule/manager_page.html';</script>";
     }
     
     @PUT

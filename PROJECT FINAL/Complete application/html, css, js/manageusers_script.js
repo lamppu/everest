@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const checkSession = function () {
         
         if (sessionStorage.username === null || sessionStorage.username === undefined) {
-            window.location.href = "/everest/";
+            window.location.href = "/Schedule/";
         }
         if(sessionStorage.username !== "admin") {
-            window.location.href = "/everest/userhomepage.html";
+            window.location.href = "/Schedule/userhomepage.html";
         }
         if(sessionStorage.dltuser === "success") {
             alert('User removed succesfully.');
@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const aUserElement = document.querySelector("#a-user");
     aUserElement.innerHTML = username;
     
-    const url = "http://localhost:8080/everest/webresources/model.user/";
+    const url = "http://10.114.32.66:8080/Schedule/webresources/entity.user/";
     
     const processJSON = function(json) {
-        let listElement = document.getElementById("list");
+        let listElement = document.getElementById("users");
         let info = "";
         info += "<select name='id' required><option value='' disabled selected>Select User...</option>";
         for (let item of json) {
@@ -44,25 +44,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
     .then(json => processJSON(json))
     .catch(error => (console.log("Fetch crashed due to " + error)));
     
-    /*
-    const dltButton = document.querySelector("#dlt-button");
-    const dltInput = document.querySelector("#dlt-input");
-    let dltData = {};
-    dltInput.addEventListener("input", function () {
-        const id = dltInput.querySelector('select[name="id"]').value;
-        dltData.id = id;
-    });
-    
-    dltButton.addEventListener("click", function () {
-        const dltUrl = url + dltData.id;
-        console.log(dltUrl);
-        const init = {
-            method: "DELETE"
-        };
-
-        fetch(dltUrl, init)
-            .then(response => response.text())
-            .then(text => (document.querySelector("body").innerHTML += text))
-            .catch(error => (alert("Something went wrong.")));
-    });*/
 });

@@ -3,17 +3,18 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="styles.css">
+        <script src="manager_page_script.js"></script>
+        <script src="script.js"></script>
+        <script src="managetasks_script.js"></script>
+        <script src="manageusers_script.js"></script>
         <title>Manager page</title>
     </head>
     <body>
 
         <nav class="navbar" id="responsive-nav">
             <a href="manager_page.html" class='active-nav'>Home</a>
-            <!--<a href="Hotel web app project/Schedule_html_js_css/schedule.html" target="_blank"> Schedule</a>-->
-            <!--<a href="#" >Add New user</a>-->
-            <a href="managetasks.html">Manage tasks</a>
-            <a href="manageusers.html" >Manage users</a>
-            <!--<a href="https://outlook.office.com/owa/" target="_blank">Email</a>-->
+            <a href="#" id="a-man-tasks">Manage tasks</a>
+            <a href="#" id="a-man-users">Manage users</a>
             <a class="user" id="a-user"></a>
             <a href="javascript:void(0);" class="icon">&#9776;</a>
         </nav>
@@ -23,7 +24,65 @@
             <a href=# id="logout">Log out</a>
         </div>
 
-        <script src="script.js"></script>
+        <div id="man-tasks">
+            <section class="options">
+                <div id="header">Manage tasks</div>
+
+                <div>
+                    <form action="http://10.114.32.66:8080/Schedule/webresources/entity.task/create" method="post">
+                        Register new task <br>
+                        <div id="list"></div>
+                        <!--<input type="number" name="ownerid" placeholder="Id from list.." required> <br>-->
+                        <input type="text" name="task" placeholder="The task.." required> <br>
+                        <input type="text" name="day" placeholder="Day to perform.." pattern="[A-Za-z' -]+" required> <br>
+                        <input type="number" name="start" placeholder="Start hour.." min=0 max=24 required> <br>
+                        <input type="number" name="end" placeholder="End hour.." min=0 max=24 required>
+                        <br><br>
+                        <input type="submit" value="SUBMIT">
+                    </form>
+                </div>
+                <div>
+                    <form action="http://10.114.32.66:8080/Schedule/webresources/entity.task/assignTask" method="post">
+                        Assign task <br>
+                        <div id="tasks"></div>
+                        <div id="list2"></div>
+                        <!--<input type="number" name="id" placeholder="UserId">-->
+                        <br>
+                        <input type="submit" value="SUBMIT">
+                    </form>
+                </div>
+                <div>
+                    <form action="http://10.114.32.66:8080/Schedule/webresources/entity.task/delUserTask" method="post">
+                        Choose user to clear tasks <br>
+                        <div id="list3"></div>
+                        <!--<input type="number" name="id" placeholder="UserId">-->
+                        <br>
+                        <input type="submit" value="SUBMIT">
+                    </form>
+                </div>
+                <div><a href="#">Contact App Support</a></div>
+
+            </section>
+        </div>
+
+        <div id="man-users">
+            <section class="options">
+                <div id="header">Manage users</div>
+
+                <div>
+                    <form action="http://10.114.32.66:8080/Schedule/webresources/entity.user/delete" method="POST">
+                        Remove user <br>
+                        <div id="users"></div>
+                        <input type="submit" value="SUBMIT">
+                    </form>
+                </div>
+                <div><a href="#">Contact App Support</a></div>
+
+            </section>
+        </div>
+
+
+        
 
     </body>
 </html>

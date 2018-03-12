@@ -27,9 +27,9 @@ import model.User;
  * @author Johanna
  */
 @Stateless
-@Path("model.user")
+@Path("entity.user")
 public class UserFacadeREST extends AbstractFacade<User> {
-
+    
     @PersistenceContext(unitName = "everestPU")
     private EntityManager em;
 
@@ -53,7 +53,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
     private boolean uniqueUsername(String username) {
         List<User> users = super.findAll();
         for (User user : users) {
-            if (user.getUsername() == username) {
+            if (user.getUsername().equals(username)) {
                 return false;
             }
         }
@@ -86,7 +86,7 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @Produces(MediaType.TEXT_HTML)
     public String delete(@FormParam("id") Integer id) {
         this.remove(id);
-        return "<script>window.sessionStorage.setItem('dltuser', 'success'); window.location.href = 'http://localhost:8080/everest/manageusers.html';</script>";
+        return "<script>window.sessionStorage.setItem('dltuser', 'success'); window.location.href = 'http://10.114.32.66:8080/Schedule/manager_page.html';</script>";
     }
     
     @GET
@@ -95,20 +95,6 @@ public class UserFacadeREST extends AbstractFacade<User> {
     public User find(@PathParam("id") Integer id) {
         return super.find(id);
     }
-    /*
-    @POST
-    @Path("{username}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public User findUser(@PathParam("username") String username) {
-        List<User> users = super.findAll();
-        for (User user : users) {
-            if (user.getUsername() == username) {
-                return user;
-            }
-        }
-        return null;
-    }
-    */
     
     @GET
     @Override

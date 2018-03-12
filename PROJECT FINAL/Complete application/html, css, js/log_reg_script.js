@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
         console.log(sessionStorage.username);
         if (sessionStorage.username !== null && sessionStorage.username !== undefined) {
             if (sessionStorage.username === "admin") {
-                window.location.href = "/everest/manager_page.html";
+                window.location.href = "/Schedule/manager_page.html";
                 
             } else {
-                window.location.href = "/everest/userhomepage.html";
+                window.location.href = "/Schedule/userhomepage.html";
             }
         }
 
@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     checkSession();
 
     //--------------------------url stuff------------------------------------------
-    const urlBase = "http://localhost:8080/everest/webresources/";
-    const usersUrl = urlBase + "model.user/";
-    const loginInfoUrl = urlBase + "model.logininformation/";
+    const urlBase = "http://10.114.32.66:8080/Schedule/webresources/";
+    const usersUrl = urlBase + "entity.user/";
+    const loginInfoUrl = urlBase + "entity.logininformation/";
     const loginUrl = loginInfoUrl + "login/";
 
     //-------------------login stuff here------------------------------------------    
@@ -91,9 +91,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
                                                         window.sessionStorage.setItem("username", loginData.username);
                                                         
                                                         if (loginData.username === "admin") {
-                                                            window.location.href = "/everest/manager_page.html?username=admin";
+                                                            window.location.href = "/Schedule/manager_page.html";
                                                         } else {
-                                                            window.location.href = "/everest/userhomepage.html?username=" + loginData.username;
+                                                            window.location.href = "/Schedule/userhomepage.html" + loginData.username;
                                                         }
                                                     } else {
                                                         unameSpan.innerHTML = "Login was unsuccesful.";

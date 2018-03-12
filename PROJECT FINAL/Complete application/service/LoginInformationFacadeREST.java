@@ -25,7 +25,7 @@ import model.LoginInformation;
  * @author Johanna
  */
 @Stateless
-@Path("model.logininformation")
+@Path("entity.logininformation")
 public class LoginInformationFacadeREST extends AbstractFacade<LoginInformation> {
 
     @PersistenceContext(unitName = "everestPU")
