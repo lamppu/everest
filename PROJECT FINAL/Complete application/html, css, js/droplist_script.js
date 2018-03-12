@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const aside = document.querySelector("aside");
     const taskurl = "http://10.114.32.66:8080/Schedule/webresources/entity.task/";
+    //const userurl = "http://10.114.32.66:8080/Schedule/webresources/entity.user/getuserbyid";
     
     const eraseList = (function(json) {
         let list = document.createElement("table");
@@ -12,9 +13,10 @@ document.addEventListener("DOMContentLoaded", function() {
             let option = document.createElement("tr");
             let data = document.createElement("td");
             let button = document.createElement("button");
-            button.classList.add("removeButton");
-            button.setAttribute("onclick", "removeTask("+item.id+");");
-            button.innerHTML = "TASK: "+item.task+" - DAY: "+item.day+" - ID: "+item.id+" - OWNER: "+item.owner_id;
+            //button.classList.add("removeButton");
+            button.addEventListener("click", removeTask);
+            button.setAttribute("value", item.id);
+            button.innerHTML = "TASK: "+item.task+" - DAY: "+item.day+" - TaskID: "+item.id;
             data.appendChild(button);
             option.appendChild(data);
             list.appendChild(option);
@@ -36,16 +38,16 @@ document.addEventListener("DOMContentLoaded", function() {
             let option = document.createElement("tr");
             let data = document.createElement("td");
             let button = document.createElement("button");
-            button.classList.add("addButton");
-            button.setAttribute("onclick", "addTask("+item.id+");");
+            //button.classList.add("addButton");
+            button.addEventListener("click", addTask);
+            button.setAttribute("value", item.id);
             button.innerHTML = "TASK: "+item.task+" - DAY: "+item.day+" - ID: "+item.id+" - OWNER: FREE TASK";
             data.appendChild(button);
             option.appendChild(data);
             list.appendChild(option);
         }
         aside.appendChild(list);
-    });    
-    
+    });
     
     fetch(taskurl)
     .then(response => response.json())    //Returns a promise that resolves JSON object
@@ -57,25 +59,26 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(selectList)
     .catch(error => alert("Fetch crashed due to " + error));
     
-    
     const removeUrl = "http://10.114.32.66:8080/Schedule/webresources/entity.task/";
-    const setuserUrl = "http://10.114.32.66:8080/Schedule/webresources/entity.task/";
+    const setuserUrl = "http://10.114.32.66:8080/Schedule/webresources/entity.task/setuser";
     //var thisUser = Request.QueryString("userid")(item);
-
-    document.querySelectorAll(".removeButton").onclick = removeTask = (taskID) => {
+    
+    function removeTask(event){
+        event.preventDefault;
         let formData = new FormData();
-        formData.append("id", taskID);
-        fetch(removeUrl, {method: 'delete', body: formData })
+        formData.append("id", event.target.value);
+        fetch(removeUrl, {
+            method: 'delete', 
+            body: formData})
                 .then(response => response.json())
-                .catch(error => alert("Pressed remove. Fetch crashed due to " + error));
+                .catch(error => alert("Removed. Fetch crashed due to " + error));
     };
-
-    document.querySelectorAll(".addButton").onclick = addTask = (taskID) => {
-        let formData = new FormData();
-        formData.append("id", taskID);
-        fetch(setuserUrl, {method: 'delete', body: formData })
+    
+    function addTask(event){
+        event.preventDefault;
+        fetch(setuserUrl, {method: 'POST', body: {"taskID": event.target.value, "userID": 2}})
                 .then(response => response.json())
-                .catch(error => alert("Pressed add. Fetch crashed due to " + error));
+                .catch(error => alert("Added. Fetch crashed due to " + error));
     };
     
 });

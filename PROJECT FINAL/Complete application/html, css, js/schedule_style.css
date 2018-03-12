@@ -6,6 +6,7 @@
     grid-template-areas:
         "section section section aside";
     background-color: lightseagreen;
+    opacity: 0.8;
 }
 
 aside {
@@ -27,7 +28,6 @@ section {
     padding: 5px;
     text-align: center;
     height: 40px;
-    color: white;
 }
 
 .alldivs {
@@ -37,7 +37,6 @@ section {
     padding: 5px;
     text-align: center;
     height: auto;
-    color: white;
 }
 
 select, table {

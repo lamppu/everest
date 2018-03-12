@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                                                         if (loginData.username === "admin") {
                                                             window.location.href = "/Schedule/manager_page.html";
                                                         } else {
-                                                            window.location.href = "/Schedule/userhomepage.html" + loginData.username;
+                                                            window.location.href = "/Schedule/userhomepage.html";
                                                         }
                                                     } else {
                                                         unameSpan.innerHTML = "Login was unsuccesful.";
