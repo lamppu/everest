@@ -5,6 +5,7 @@
  */
 package service;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -103,7 +104,21 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
     public List<Task> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
-
+    
+    @GET
+    @Path("unassigned")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Task> findUnAssigned() {
+        List<Task> all = this.findAll();
+        List<Task> unassigned = new ArrayList();
+        for(Task task : all) {
+            if (task.getOwner() == null) {
+                unassigned.add(task);
+            }
+        }
+        return unassigned;
+    }
+    
     @GET
     @Path("count")
     @Produces(MediaType.TEXT_PLAIN)

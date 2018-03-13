@@ -18,7 +18,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import model.LoginInformation;
+import entity.LoginInformation;
+import entity.User;
 
 /**
  *
@@ -40,6 +41,9 @@ public class LoginInformationFacadeREST extends AbstractFacade<LoginInformation>
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
     public LoginInformation create(LoginInformation entity) {
+        if (this.found(entity.getUsername())) {
+            return null;
+        }
         return super.create(entity);
     }
     
@@ -59,7 +63,16 @@ public class LoginInformationFacadeREST extends AbstractFacade<LoginInformation>
             return false;
         }
     }
-
+    
+    @POST
+    @Path("addUser/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public LoginInformation addUser(@PathParam("id") String id, User user) {
+        this.find(id).setUser(user);
+        return this.find(id);
+    }
+    
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_JSON})

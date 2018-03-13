@@ -265,12 +265,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
                                 "Content-type": "application/json; charset=UTF-8"
                             }
                         };
+                        //const newUrl = usersUrl + "createuser";
+
                         fetch(loginInfoUrl, loginInit)
                                 .then(response => response.json())
                                 .then(json => (console.log("Login info saved: " + JSON.stringify(json))))
-                                .then(result => fetch(usersUrl, userInit))
+                                .catch(error => (alert("Something went wrong. Please check your information and try again.")));
+                        
+                        fetch(usersUrl, userInit)
                                 .then(response => response.json())
-                                .then(json => (console.log("User saved: " + JSON.stringify(json))))
+                                .then(function (json) {
+                                    console.log("User saved: " + JSON.stringify(json));
+                                    const loginAddUserUrl = loginInfoUrl + "addUser/" + newLoginData.username;
+                                    console.log(loginAddUserUrl);
+                                    const loginAddUserInit = {
+                                        method: "POST",
+                                        body: JSON.stringify(json),
+                                        headers: {
+                                            "Content-type": "application/json; charset=UTF-8"
+                                        }
+                                    };
+
+                                    fetch(loginAddUserUrl, loginAddUserInit)
+                                            .then(response => response.json())
+                                            .then(json => (console.log("Login info: " + JSON.stringify(json))))
+                                            .catch(error => (alert("Something went wrong. Please check your information and try again.")));
+                                })
                                 .then(result => box())
                                 .then(result => initialize())
                                 .then(result => (hidden.style.display = 'none'))
