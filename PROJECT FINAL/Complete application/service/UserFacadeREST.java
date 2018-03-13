@@ -85,6 +85,11 @@ public class UserFacadeREST extends AbstractFacade<User> {
     @Path("delete")
     @Produces(MediaType.TEXT_HTML)
     public String delete(@FormParam("id") Integer id) {
+        User user = em.find(User.class, id);
+        user.unassignTasks();
+        LoginInformation info = em.find(LoginInformation.class, user.getUsername());
+        info.setUser(null);
+        em.remove(info);
         this.remove(id);
         return "<script>window.sessionStorage.setItem('dltuser', 'success'); window.location.href = 'http://10.114.32.66:8080/Schedule/manager_page.html';</script>";
     }

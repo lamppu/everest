@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let info = "";
         info += "<select name='id' required><option value='' disabled selected>Select User...</option>";
         for (let item of json) {
-            info += `<option value=${item.id}>Id: ${item.id} ${item.firstname} ${item.lastname}`;
+            if (item.username !== "admin") {
+                info += `<option value=${item.id}>Id: ${item.id} ${item.firstname} ${item.lastname}`;
+            }
         };
         info += "</select>";
         listElement.innerHTML = info;

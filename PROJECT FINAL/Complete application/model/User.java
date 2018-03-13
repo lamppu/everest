@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
@@ -108,6 +108,11 @@ public class User implements Serializable{
     public void emptyTaskList() {
         this.taskList = new ArrayList();
     }
-
+    
+    public void unassignTasks() {
+        for (Task task : this.taskList) {
+            unassignTask(task);
+        }
+    }
     
 }
