@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let option = document.createElement("tr");
             let data = document.createElement("td");
             let button = document.createElement("button");
-            //button.classList.add("removeButton");
             button.addEventListener("click", removeTask);
             button.setAttribute("value", item.id);
             button.innerHTML = "TASK: "+item.task+" - DAY: "+item.day+" - TaskID: "+item.id;
@@ -38,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let option = document.createElement("tr");
             let data = document.createElement("td");
             let button = document.createElement("button");
-            //button.classList.add("addButton");
             button.addEventListener("click", addTask);
             button.setAttribute("value", item.id);
             button.innerHTML = "TASK: "+item.task+" - DAY: "+item.day+" - ID: "+item.id+" - OWNER: FREE TASK";
