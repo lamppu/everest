@@ -94,6 +94,13 @@ public class LoginInformationFacadeREST extends AbstractFacade<LoginInformation>
     }
     
     @GET
+    @Path("user/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public model.User findUser(@PathParam("id") String id) {
+        return super.find(id).getUser();
+    }
+    
+    @GET
     @Path("found/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public boolean found(@PathParam("id") String id) {
